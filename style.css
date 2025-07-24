@@ -1,0 +1,292 @@
+/* --- General Styling & Variables --- */
+/* ':root' is a selector that targets the highest-level element in the DOM, the <html> element. */
+/* We define CSS Custom Properties (variables) here for easy color management. */
+:root {
+    --bg-color: #1a1a1a;          /* A dark grey for the main background */
+    --primary-color: #ffffff;     /* White for main text */
+    --secondary-color: #aaaaaa;  /* A light grey for secondary text */
+    --accent-color: #00bfff;      /* A bright blue for highlights and buttons */
+    --card-bg: #2a2a2a;           /* A slightly lighter grey for card backgrounds */
+}
+
+/* The '*' is a universal selector. It selects all HTML elements on the page. */
+* {
+    margin: 0;                    /* Removes default margin from all elements */
+    padding: 0;                   /* Removes default padding from all elements */
+    box-sizing: border-box;       /* Changes how width/height are calculated to include padding and border */
+}
+
+/* Styles applied to the root <html> element */
+html {
+    scroll-behavior: smooth;      /* Enables smooth scrolling when clicking on links like <a href="#about"> */
+}
+
+/* Styles applied to the <body> element */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; /* A modern, system-default font stack */
+    background-color: var(--bg-color); /* Uses the background color variable we defined */
+    color: var(--primary-color);       /* Uses the primary text color variable */
+    line-height: 1.6;                  /* Increases the space between lines of text for better readability */
+}
+
+/* General styling for all heading elements */
+h1, h2, h3 {
+    line-height: 1.2;             /* Sets a slightly tighter line-height for headings */
+    margin-bottom: 1rem;          /* Adds some space below each heading. 1rem is typically 16px. */
+}
+
+/* Specific styling for the main section headings */
+h2 {
+    text-align: center;           /* Centers the heading text */
+    font-size: 2.5rem;            /* Sets a larger font size. 1rem = 16px, so 2.5rem = 40px */
+    margin-bottom: 3rem;          /* Adds more space below the main section headings */
+}
+
+/* General styling for all <section> elements */
+section {
+    padding: 6rem 5%;             /* Adds padding on top/bottom (6rem) and left/right (5%) */
+}
+
+/* Styling for reusable button elements (class="btn") */
+.btn {
+    display: inline-block;        /* Allows setting width/height/padding, but flows with text */
+    padding: 0.8rem 1.5rem;       /* Padding inside the button (top/bottom and left/right) */
+    background-color: var(--accent-color); /* Sets the button background color */
+    color: var(--bg-color);       /* Sets the button text color */
+    text-decoration: none;        /* Removes the default underline from links */
+    font-weight: bold;            /* Makes the button text bold */
+    border-radius: 5px;           /* Rounds the corners of the button */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smoothly animates changes to transform and box-shadow */
+}
+
+/* Styles for the button when the mouse hovers over it */
+.btn:hover {
+    transform: translateY(-3px);  /* Moves the button up slightly */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4); /* Adds a subtle shadow to give a "lifting" effect */
+}
+
+/* A utility class to apply the accent color to text */
+.highlight {
+    color: var(--accent-color);
+}
+
+/* --- Header & Navigation --- */
+header {
+    position: fixed;              /* Fixes the header to the viewport, so it stays at the top when scrolling */
+    width: 100%;                  /* Makes the header span the full width of the viewport */
+    top: 0;                       /* Positions it at the very top */
+    left: 0;                      /* Positions it at the very left */
+    background-color: rgba(26, 26, 26, 0.8); /* A semi-transparent background */
+    backdrop-filter: blur(10px);  /* Creates a "frosted glass" effect for content scrolling behind it */
+    z-index: 1000;                /* Ensures the header stays on top of all other content */
+    border-bottom: 1px solid #333; /* A subtle bottom border to separate it from the page */
+}
+
+nav {
+    display: flex;                /* Enables Flexbox layout for this container */
+    justify-content: space-between; /* Puts space between the logo and the nav links */
+    align-items: center;          /* Vertically centers the items in the nav bar */
+    max-width: 1200px;            /* Sets a maximum width for the content inside the nav */
+    margin: 0 auto;               /* Centers the nav content on larger screens */
+    padding: 1rem 5%;             /* Adds padding inside the nav bar */
+}
+
+.nav-logo {
+    font-size: 1.5rem;            /* Sets the font size for the logo text */
+    font-weight: bold;
+    color: var(--primary-color);
+    text-decoration: none;
+}
+
+.nav-links {
+    display: flex;                /* Lines up the list items horizontally */
+    list-style: none;             /* Removes the default bullet points from the list */
+}
+
+.nav-links li {
+    margin-left: 2rem;            /* Adds space to the left of each navigation link */
+}
+
+.nav-links a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;  /* Smoothly animates the color change on hover */
+}
+
+.nav-links a:hover {
+    color: var(--accent-color);   /* Changes the link color to the accent color on hover */
+}
+
+/* The hamburger icon is hidden by default on desktop */
+.hamburger {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;              /* Changes the mouse cursor to a pointer on hover */
+}
+
+/* --- Hero Section --- */
+.hero {
+    min-height: 100vh;            /* Sets the minimum height of the hero section to be the full viewport height */
+    display: flex;
+    align-items: center;          /* Vertically centers the content */
+    justify-content: center;      /* Horizontally centers the content */
+    text-align: center;
+}
+
+.hero-text h1 {
+    font-size: 4rem;              /* A very large font size for the main heading */
+}
+
+.hero-text p {
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    margin-bottom: 2rem;
+}
+
+#typewriter {
+    color: var(--accent-color);   /* The text being typed by JavaScript will have the accent color */
+}
+
+.social-icons a {
+    color: var(--secondary-color);
+    font-size: 1.8rem;
+    margin: 0 1rem;               /* Adds space around each social icon */
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-color);
+    transform: translateY(-5px);  /* Lifts the icon up on hover */
+}
+
+.social-icons {
+    margin-bottom: 2.5rem;        /* Adds space between the icons and the button below */
+}
+
+/* --- About Section --- */
+.about-content {
+    display: flex;
+    align-items: center;
+    gap: 3rem;                    /* Adds space between the profile picture and the text */
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.profile-pic {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;           /* Makes the image a perfect circle */
+    border: 3px solid var(--accent-color);
+    padding: 40px; /* Adds a colored border around the image */
+}
+
+.about-content p {
+    flex: 1;                      /* Allows the paragraph to take up the remaining space */
+    color: var(--secondary-color);
+    text-align: left;
+}
+
+/* --- Projects Section --- */
+.project-grid {
+    display: grid;                /* Enables CSS Grid layout */
+    /* Creates responsive columns: they fit as many 300px columns as possible, and stretch to fill the space. */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;                    /* Sets the space between grid items (the project cards) */
+}
+
+.project-card {
+    background-color: var(--card-bg);
+    border-radius: 10px;
+    overflow: hidden;             /* Ensures content (like images) doesn't spill outside the rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.project-card:hover {
+    transform: translateY(-10px); /* Lifts the entire card up on hover */
+}
+
+.project-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;            /* Ensures the image covers the area without being distorted */
+}
+
+/* Padding for the text content inside the project card */
+.project-card h3 { padding: 1rem 1.5rem 0.5rem; }
+.project-card p { padding: 0 1.5rem; color: var(--secondary-color); font-size: 0.9rem; }
+
+.project-links {
+    padding: 1.5rem;
+    display: flex;
+    gap: 1rem;                    /* Adds space between the "View Live" and "Source Code" buttons */
+}
+
+/* --- Contact Section --- */
+.contact {
+    text-align: center;
+    background-color: var(--card-bg); /* Gives the section a slightly different background color */
+}
+
+.contact p {
+    max-width: 600px;
+    margin: 0 auto 2rem;          /* Centers the paragraph and adds space below it */
+    color: var(--secondary-color);
+}
+
+/* --- Footer --- */
+footer {
+    text-align: center;
+    padding: 2rem 0;
+    background-color: #111;       /* A very dark background for the footer */
+    color: var(--secondary-color);
+    font-size: 0.9rem;
+}
+
+/* --- Responsive Design for Mobile --- */
+/* A media query applies these styles ONLY when the screen width is 768px or less. */
+@media (max-width: 768px) {
+    /* Make headings smaller on mobile */
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2rem; }
+    
+    /* Styles for the mobile navigation menu */
+    .nav-links {
+        position: fixed;              /* Fixed position to overlay on the screen */
+        top: 0;
+        right: -100%;                 /* Start off-screen to the right */
+        width: 60%;
+        height: 100vh;                /* Full screen height */
+        background-color: var(--card-bg);
+        flex-direction: column;       /* Stack the links vertically */
+        justify-content: center;
+        align-items: center;
+        transition: right 0.5s ease-in-out; /* Smooth slide-in animation */
+    }
+
+    /* This class will be added by JavaScript to show the menu */
+    .nav-links.active {
+        right: 0;                     /* Slide the menu into view */
+    }
+    
+    .nav-links li {
+        margin: 2rem 0;               /* Add vertical spacing between mobile nav links */
+    }
+
+    /* Show the hamburger icon on mobile */
+    .hamburger {
+        display: block;
+        z-index: 1001;                /* Ensure it's above the nav menu background */
+    }
+
+    /* Stack the about section content vertically on mobile */
+    .about-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .about-content p {
+        text-align: center;
+    }
+}
